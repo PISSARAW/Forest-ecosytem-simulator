@@ -1,3 +1,7 @@
+import { Entity } from "../core/Entity";
+import { AnimalBehavior } from "../enums/animal-behavior";
+import { Vector3D } from "../core/vector3-d";
+
 export class Animal extends Entity {
     private species: AnimalSpecies;
     private velocity: Vector3D;
@@ -11,28 +15,32 @@ export class Animal extends Entity {
     private socialGroup: Animal[];
     private lastReproduction: number;
 
-    constructor(id: string, position: Vector3D, species: AnimalSpecies);
+    constructor(id: string, position: Vector3D, species: AnimalSpecies){
+        super(id, position);
+        this.reproductiveUrge = 5;
+
+    }
 
     // Méthodes publiques
     update(deltaTime: number): void;
     render(): void;
     getSpecies(): AnimalSpecies;
-    getVelocity(): Vector3D;
-    setVelocity(velocity: Vector3D): void;
-    getHunger(): number;
-    getReproductiveUrge(): number;
+    getVelocity(): Vector3D{return this.velocity;}
+    setVelocity(velocity: Vector3D): void{this.velocity=velocity;}
+    getHunger(): number{this.hunger;}
+    getReproductiveUrge(): number{return this.reproductiveUrge;}
     getCurrentBehavior(): AnimalBehavior;
     setCurrentBehavior(behavior: AnimalBehavior): void;
-    getTarget(): Entity | null;
-    setTarget(target: Entity | null): void;
-    getGender(): Gender;
-    getSize(): number;
-    getMaxSpeed(): number;
-    getSocialGroup(): Animal[];
-    addToSocialGroup(animal: Animal): void;
-    removeFromSocialGroup(animal: Animal): void;
-    isReadyToReproduce(): boolean;
-    resetReproductiveCycle(): void;
+    getTarget(): Entity | null{return this.target;}
+    setTarget(target: Entity | null): void{this.target=target;}
+    getGender(): Gender{return this.gender;}
+    getSize(): number{return this.size;}
+    getMaxSpeed(): number{return this.maxSpeed;}
+    getSocialGroup(): Animal[]{return this.socialGroup;}
+    addToSocialGroup(animal: Animal): void{this.socialGroup.push(animal);}
+    removeFromSocialGroup(animal: Animal): void{this.socialGroup = this.socialGroup.filter(an => an !== animal);}
+    isReadyToReproduce(): boolean{ return this.reproductiveUrge==20;}
+    resetReproductiveCycle(): void{this.reproductiveUrge=0;}
     getMaxConsumption(): number;
     getReachDistance(): number;
     reduceHunger(amount: number): void;

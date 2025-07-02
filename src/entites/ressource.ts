@@ -1,5 +1,6 @@
 import { Entity } from "../core/Entity";
 import { Vector3D } from "../core/vector3-d";
+import { ResourceType } from "../enums/ressource-type";
 
 export class Resource extends Entity {
     private type: ResourceType;
@@ -20,16 +21,16 @@ export class Resource extends Entity {
     }
 
     // Méthodes publiques
-    update(deltaTime: number): void;
-    render(): void;
-    getType(): ResourceType;
-    getNutritionalValue(): number;
-    getQuantity(): number;
-    getMaxQuantity(): number;
-    setSourceEntity(entity: Entity): void;
-    getSourceEntity(): Entity | null;
-    consume(amount: number): number;
-    replenish(amount: number): void;
+    //update(deltaTime: number): void;
+    //render(): void;
+    getType(): ResourceType{return this.type;}
+    getNutritionalValue(): number{return this.nutritionalValue;}
+    getQuantity(): number{return this.quantity;}
+    getMaxQuantity(): number{return this.maxQuantity;}
+    setSourceEntity(entity: Entity): void{this.sourceEntity=entity;}
+    getSourceEntity(): Entity | null{return this.sourceEntity ? this.sourceEntity : null;}
+    consume(amount: number): number{if(this.quantity-amount>0){this.quantity-=amount; return this.quantity;}else{return 0;}}
+    replenish(amount: number): void{if(this.quantity+amount<this.maxQuantity){this.quantity+=amount;}else{this.quantity+=this.maxQuantity-amount;}}
     
     // Méthodes privées
     private renew(deltaTime: number): void;
