@@ -34,7 +34,7 @@ export class Vector3D {
         return this;
     }
     equals(other: Vector3D): boolean{
-        return other===this;
+        return this.x==other.x && this.y==other.y && this.z==other.z;
     }
     toString(): string{
         return `(${this.x}, ${this.y}, ${this.z})`;

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Vector3D } from '../core/vector3-d';
+import { RandomGenerator } from '../utils/random-generator';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class Home {
   v2:Vector3D;
 
   constructor(){
-    this.v1=new Vector3D(5,2,9);
-    this.v2=new Vector3D(3,8,4);
+    this.v1=(new RandomGenerator(5)).randomVector3D(1,100,1,100,1,100);
+    this.v2=(new RandomGenerator(9)).randomVector3D(1,100,1,100,1,100);
   }
 }
