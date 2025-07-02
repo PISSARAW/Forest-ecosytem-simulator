@@ -17,8 +17,8 @@ export abstract class Entity {
     }
 
     // Méthodes abstraites
-    abstract update(deltaTime: number): void;
-    abstract render(): void;
+    //abstract update(deltaTime: number): void;
+    //abstract render(): void;
     
     // Méthodes publiques
     getId(): string{return this.id;}
