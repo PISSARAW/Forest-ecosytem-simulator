@@ -8,7 +8,7 @@ import { Home } from '../home/home';
    template: `
     <main>
       <header class="brand-name">
-        <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true" />
+        <h1>{{title}}</h1>
       </header>
       <section class="content">
         <app-home></app-home>
@@ -18,5 +18,5 @@ import { Home } from '../home/home';
   styleUrl: './app.scss'
 })
 export class App {
-  protected title = 'Forest';
+  protected title = 'Forest Simulation Platform';
 }

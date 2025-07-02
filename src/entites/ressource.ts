@@ -18,6 +18,8 @@ export class Resource extends Entity {
         this.renewalRate = 0;
         this.maxQuantity=quantity;
         this.decayRate=0;
+        this.nutritionalValue = 2;
+        this.sourceEntity = null;
     }
 
     // Méthodes publiques
@@ -33,8 +35,8 @@ export class Resource extends Entity {
     replenish(amount: number): void{if(this.quantity+amount<this.maxQuantity){this.quantity+=amount;}else{this.quantity+=this.maxQuantity-amount;}}
     
     // Méthodes privées
-    private renew(deltaTime: number): void;
-    private decay(deltaTime: number): void;
-    private calculateNutritionalValue(): number;
-    private calculateRenewalRate(): number;
+    //private renew(deltaTime: number): void;
+    //private decay(deltaTime: number): void;
+    //private calculateNutritionalValue(): number;
+    //private calculateRenewalRate(): number;
 }
