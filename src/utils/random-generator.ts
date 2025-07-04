@@ -6,8 +6,8 @@ export class RandomGenerator {
     
 
     constructor(seed?: number){
-        this.seed = seed ? seed : 0;
-        this.state=0;
+        this.seed = seed ?? Date.now();
+        this.state=null;
     }
 
     // Méthodes publiques
@@ -21,6 +21,13 @@ export class RandomGenerator {
     randomGaussian(mean: number=0, stdDev: number=1): number{return this.boxMuller() * stdDev + mean;}
     randomVector3D(minX: number, maxX: number, minY: number, maxY: number, minZ: number, maxZ: number): Vector3D{
         return new Vector3D(this.randomInt(minX, maxX), this.randomInt(minY, maxY), this.randomInt(minZ, maxZ));
+    }
+    randomVector3DRange(min:Vector3D, max:Vector3D):Vector3D{
+        return new Vector3D(
+            this.randomInt(min.x, max.x),
+            this.randomInt(min.y, max.y),
+            this.randomInt(min.z, max.z)
+        );
     }
     
     // Méthodes privées
@@ -46,5 +53,18 @@ export class RandomGenerator {
         const mul = Math.sqrt(-2.0 * Math.log(s) / s);
         this.state = v * mul;
         return u * mul;
+    }
+
+    shuffle<T>(array: T[]):T[]{
+        const result = [...array];
+        for(let i = result.length -1;i>0; i--){
+            const j = this.randomInt(0,i);
+            [result[i], result[j]] = [result[j], result[i]];
+        }
+        return result;
+    }
+
+    randomSign():number{
+        return this.randomBool()?1:-1;
     }
 }
