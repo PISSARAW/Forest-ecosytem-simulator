@@ -27,7 +27,7 @@ export abstract class Entity {
     getAge(): number{return this.age;}
     setAge(age: number): void{this.age=age;}
     isEntityAlive(): boolean{return this.isAlive;}
-    kill(): void{this.energy=0;}
+    kill(): void{this.energy=0; this.isAlive=false;}
     getEnergy(): number{return this.energy;}
     getMaxEnergy(): number{return this.maxEnergy;}
     addEnergy(amount: number): void{
@@ -35,7 +35,7 @@ export abstract class Entity {
             this.energy+=amount;
         }
         else{
-            this.energy+= this.maxEnergy - amount;
+            this.energy+= Math.min(this.energy+amount, this.maxEnergy);
         }
     }
     consumeEnergy(amount: number): void{this.energy-=amount;}
