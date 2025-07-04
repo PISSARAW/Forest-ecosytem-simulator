@@ -21,17 +21,17 @@ export class Vector3D {
         return new Vector3D(this.y*other.z-this.z*other.y, this.z*other.x-this.x*other.z, this.x*other.y-this.y*other.x);
     }
     magnitude(): number{
-        return Math.pow(this.x, 2)+Math.pow(this.y, 2)+Math.pow(this.z,2);
+        return Math.sqrt(this.x**2+ this.y**2 + this.z**2);
     }
     normalize(): Vector3D{
-        let magnitude = this.magnitude();
-        return new Vector3D(this.x/magnitude, this.y/magnitude, this.z/magnitude);
+        const mag = this.magnitude();
+        return mag===0? new Vector3D(0,0,0) : this.divide(mag);
     }
     distanceTo(other: Vector3D): number{
         return Math.pow(this.x-other.x, 2) + Math.pow(this.y-other.y, 2) + Math.pow(this.z-other.z, 2) ;
     }
     clone(): Vector3D{
-        return this;
+        return new Vector3D(this.x, this.y, this.z);
     }
     equals(other: Vector3D): boolean{
         return this.x==other.x && this.y==other.y && this.z==other.z;
@@ -39,4 +39,11 @@ export class Vector3D {
     toString(): string{
         return `(${this.x}, ${this.y}, ${this.z})`;
     }
+    toArray():[number, number, number]{
+        return [this.x, this.y, this.z];
+    }
+    static fromArray(arr:[number, number, number]):Vector3D{
+        return new Vector3D(arr[0], arr[1], arr[2]);
+    }
+
 }
