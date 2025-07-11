@@ -102,7 +102,7 @@ export class Animal extends Entity {
                 break;
             case AnimalBehavior.WANDERING:
                 default:
-                    this.wander():
+                    this.wander();
                     break;
             case AnimalBehavior.SEEKING_MATE:
                 this.findMate();

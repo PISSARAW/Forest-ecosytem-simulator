@@ -1,27 +1,72 @@
-<h2>Test of vectors</h2>
-<div class="test">
-<p>Vector 1 = {{v1}} et Vector 2 = {{v2}}</p>
-<h3>Analyses</h3>
-<div class="analyses">
-<h4>Addition</h4>
-<p>{{v1.add(v2)}}</p>
-<h4>Substraction</h4>
-<p>{{v1.subtract(v2)}}</p>
-<h4>Multiplication scalaire</h4>
-<p>{{v1.multiply(5)}}</p>
-<h4>Division</h4>
-<p>{{v1.divide(5)}}</p>
-<h4>Dot</h4>
-<p>{{v1.dot(v2)}}</p>
-<h4>Cross</h4>
-<p>{{v1.cross(v2)}}</p>
-<p>Magnitude</p>
-<p>{{v1.magnitude()}}</p>
-<p>Normalize</p>
-<p>{{v1.normalize()}}</p>
-<h4>Distance To V2</h4>
-<p>{{v1.distanceTo(v2)}}</p>
-<h4>Equals</h4>
-<p>{{v1.equals(v2)}}</p>
-</div>
+<h2 class="text-2xl font-bold text-center my-6">🧪 Test de Vector3D</h2>
+
+<div class="max-w-4xl mx-auto p-6 bg-white shadow rounded-lg space-y-6">
+  <div class="flex justify-center">
+    <button
+      (click)="regenerate()"
+      class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+    >
+      🔄 Régénérer les vecteurs
+    </button>
+  </div>
+
+  <fieldset class="border border-gray-300 rounded p-4">
+    <legend class="text-lg font-semibold text-gray-700 px-2">Vecteurs générés</legend>
+    <p class="mt-2 text-gray-800"><strong>Vector 1</strong> : ({{v1.x}}, {{v1.y}}, {{v1.z}})</p>
+    <p class="text-gray-800"><strong>Vector 2</strong> : ({{v2.x}}, {{v2.y}}, {{v2.z}})</p>
+  </fieldset>
+
+  <section class="space-y-6">
+    <h3 class="text-xl font-semibold text-gray-800 border-b pb-1">📊 Analyses vectorielles</h3>
+
+    <div >
+      <h4 class="text-lg font-medium text-blue-600">➕ Addition</h4>
+      <p class="text-gray-700">{{addition}}</p>
+    </div>
+
+    <div >
+      <h4 class="text-lg font-medium text-blue-600">➖ Soustraction</h4>
+      <p class="text-gray-700">{{substraction}}</p>
+    </div>
+
+    <div >
+      <h4 class="text-lg font-medium text-blue-600">✖️ Multiplication scalaire (×5)</h4>
+      <p class="text-gray-700">{{multiply}}</p>
+    </div>
+
+    <div >
+      <h4 class="text-lg font-medium text-blue-600">➗ Division scalaire (/5)</h4>
+      <p class="text-gray-700">{{divide}}</p>
+    </div>
+
+    <div >
+      <h4 class="text-lg font-medium text-blue-600">📍 Produit scalaire (dot product)</h4>
+      <p class="text-gray-700">{{dotProduct}}</p>
+    </div>
+
+    <div >
+      <h4 class="text-lg font-medium text-blue-600">🔁 Produit vectoriel (cross product)</h4>
+      <p class="text-gray-700">{{cross}}</p>
+    </div>
+
+    <div>
+      <h4 class="text-lg font-medium text-blue-600">📏 Magnitude de V1</h4>
+      <p class="text-gray-700">{{v1.magnitude()}}</p>
+    </div>
+
+    <div >
+      <h4 class="text-lg font-medium text-blue-600">📐 V1 normalisé</h4>
+      <p class="text-gray-700">{{normalize}}</p>
+    </div>
+
+    <div>
+      <h4 class="text-lg font-medium text-blue-600">📍 Distance entre V1 et V2</h4>
+      <p class="text-gray-700">{{v1.distanceTo(v2)}}</p>
+    </div>
+
+    <div>
+      <h4 class="text-lg font-medium text-blue-600">✅ V1 est-il égal à V2 ?</h4>
+      <p class="text-gray-700 font-semibold">{{equal ? "Oui ✅" : "Non ❌"}}</p>
+    </div>
+  </section>
 </div>
