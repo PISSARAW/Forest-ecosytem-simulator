@@ -1,59 +1,125 @@
-# ForestEcosytemSimulator
+# 🌲 Forest Ecosystem Simulator
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+> Une simulation interactive d'un écosystème forestier en 3D, développée avec **Angular 20** et **Three.js**.
 
-## Development server
+Forest Ecosystem Simulator est un projet pédagogique qui modélise la vie d'une forêt : les arbres poussent, produisent des fruits au fil des saisons, peuvent prendre feu, tandis que les animaux se déplacent, se nourrissent, se reproduisent et interagissent entre eux. L'objectif est d'observer l'équilibre — ou le déséquilibre — d'un écosystème vivant en temps réel.
 
-To start a local development server, run:
+---
+
+## ✨ Fonctionnalités
+
+- 🌳 **Cycle de vie des arbres** : croissance, production de fruits, vieillissement et mort selon l'espèce et la saison.
+- 🦊 **Comportements animaux** : recherche de nourriture, recherche d'un partenaire, fuite, repos, errance.
+- 🍂 **Saisons dynamiques** : printemps, été, automne, hiver — chaque saison influence la croissance et la production.
+- 🔥 **Événements environnementaux** : incendies, dégâts, propagation et conséquences sur la forêt.
+- 🧬 **Reproduction & génétique** : les animaux ont un genre, un cycle reproductif et des groupes sociaux.
+- 🎨 **Rendu 3D** propulsé par Three.js, intégré dans une application Angular avec rendu côté serveur (SSR).
+
+---
+
+## 🏗️ Stack technique
+
+| Élément | Technologie |
+| --- | --- |
+| Framework front-end | Angular 20 |
+| Rendu 3D | Three.js |
+| Langage | TypeScript 5.8 |
+| SSR | Angular SSR + Express |
+| Tests | Karma + Jasmine |
+| Build | Angular CLI |
+
+---
+
+## 🚀 Démarrage rapide
+
+### Prérequis
+- [Node.js](https://nodejs.org/) ≥ 20
+- npm ≥ 10 (ou yarn/pnpm équivalent)
+- Angular CLI (optionnel, fourni en local) : `npm install -g @angular/cli`
+
+### Installation
 
 ```bash
-ng serve
+git clone https://github.com/PISSARAW/Forest-ecosytem-simulator.git
+cd Forest-ecosytem-simulator
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Lancer l'application
 
 ```bash
-ng generate component component-name
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Puis ouvrez votre navigateur à l'adresse [http://localhost:4200/](http://localhost:4200/). L'application se recharge automatiquement à chaque modification des sources.
+
+---
+
+## 🧱 Structure du projet
+
+```
+src/
+├── app/          # Composant racine et configuration Angular
+├── core/         # Classes de base (Entity, Vector3D, ...)
+├── entites/      # Entités du monde : Tree, Animal, Forest, Ressource
+├── enums/        # Énumérations (Season, AnimalBehavior, WeatherType, ...)
+├── interfaces/   # Contrats typés (TreeSpecies, AnimalSpecies, ...)
+├── home/         # Page d'accueil de la simulation
+├── utils/        # Utilitaires (MathUtils, ...)
+└── main.ts       # Point d'entrée client
+```
+
+Chaque entité de la simulation hérite de la classe abstraite `Entity` et possède son propre cycle `update(deltaTime)` qui fait évoluer son état au fil du temps simulé.
+
+---
+
+## 🛠️ Scripts utiles
+
+| Commande | Description |
+| --- | --- |
+| `npm start` | Lance le serveur de développement Angular |
+| `npm run build` | Compile l'application pour la production dans `dist/` |
+| `npm run watch` | Build incrémental en mode développement |
+| `npm test` | Exécute la suite de tests unitaires (Karma + Jasmine) |
+| `npm run serve:ssr:Forest-ecosytem-simulator` | Démarre le serveur SSR à partir du build |
+
+### Générer un nouveau composant
+
+Angular CLI permet de scaffolder rapidement de nouveaux éléments :
 
 ```bash
-ng generate --help
+ng generate component nom-du-composant
+ng generate --help   # Pour la liste complète des schématiques
 ```
 
-## Building
+### Tests end-to-end
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Aucun framework e2e n'est livré par défaut avec Angular CLI. Vous pouvez en intégrer un (Cypress, Playwright, ...) selon vos besoins :
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## 🤝 Contribuer
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Les contributions sont les bienvenues ! Pour proposer une amélioration :
+
+1. Forkez le dépôt
+2. Créez une branche : `git checkout -b feature/ma-fonctionnalite`
+3. Committez vos changements : `git commit -m "Ajoute ma fonctionnalité"`
+4. Poussez la branche : `git push origin feature/ma-fonctionnalite`
+5. Ouvrez une Pull Request
+
+---
+
+## 📚 Ressources
+
+- [Documentation Angular](https://angular.dev/)
+- [Documentation Three.js](https://threejs.org/docs/)
+- [Référence Angular CLI](https://angular.dev/tools/cli)
+
+---
+
+_Projet généré initialement avec [Angular CLI](https://github.com/angular/angular-cli) v20.0.5._
